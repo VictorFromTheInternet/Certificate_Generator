@@ -5,12 +5,7 @@ function StudentTable({students, onChange, addRow, removeRow}) {
   return (
     <div className="table-container">
         <div className="table-controls-container">
-            <button type="button" onClick={(index)=>{
-                addRow({
-                    name: '',
-                    grade: ''
-                })                
-            }}>Add Row</button>    
+            <button type="button" onClick={addRow}>Add Row</button>    
         </div>
         <table>
             <thead>
@@ -24,15 +19,17 @@ function StudentTable({students, onChange, addRow, removeRow}) {
             <tbody>
                 {
                     students.map((student,index)=>{
-                        <tr key={index}>
-                            <td></td>
-                            <td></td>
-                            <td>                                
-                                <button type="button" onClick={(index)=>{
-                                    removeRow(index)
-                                }}>Delete</button>
-                            </td>
-                        </tr>
+                        return(
+                            <tr key={index}>
+                                <td></td>
+                                <td></td>
+                                <td>                                
+                                    <button type="button" onClick={()=>{
+                                        removeRow(index)
+                                    }}>Delete</button>
+                                </td>
+                            </tr>
+                        )
                     })
                 }
             </tbody>
