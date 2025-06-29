@@ -5,6 +5,7 @@ import DateInput from './components/DateInput.jsx'
 import FileInput from './components/FileInput.jsx'
 import StudentTable from './components/StudentTable.jsx'
 
+
 function App() {
   const today = new Date()
   const minDate = new Date(today.getFullYear() - 4, today.getMonth(), today.getDate()).toISOString().split('T')[0]
@@ -98,6 +99,10 @@ function App() {
 
           <button type="submit">Generate PDF</button>
         </form>
+
+        <div className="pdf-container">
+          <MyDocument></MyDocument>
+        </div>
       </div>      
       
       
