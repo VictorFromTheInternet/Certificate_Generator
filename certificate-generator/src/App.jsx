@@ -33,8 +33,7 @@ function App() {
   const handleStudentChange = (index, field, value) => {
     setFormData(prev => {
       const students = prev.students.map((student, i)=>{
-        (i === index)?{ ...student, [field]: value } : student
-       
+        return (i === index)?{ ...student, [field]: value } : student       
       })
       
       return { ...prev, students };
@@ -64,40 +63,42 @@ function App() {
 
   return (
     <>      
-      <form onSubmit={handleSubmit}>
-        <TextInput placeholder="School Name"
-          name="schoolName"
-          value={formData.schoolName}
-          onChange={handleInputChange}
-          ></TextInput>
+      <div className="main-container">
+        <form onSubmit={handleSubmit}>
+          <TextInput placeholder="School Name"
+            name="schoolName"
+            value={formData.schoolName}
+            onChange={handleInputChange}
+            ></TextInput>
 
-        <DateInput
-          placeholder="Date"
-          name="date"
-          value={formData.date}
-          onChange={handleInputChange}
-          min={minDate}
-          max={maxDate}
-        ></DateInput>
-        
-        <FileInput
-          name="schoolLogo"
-          value={formData.schoolLogo}
-          onChange={handleInputChange}
-          accept=".jpg,.png,.svg"
-          multiple={false}
-          placeholder="Upload School Logo"
-        ></FileInput>
+          <DateInput
+            placeholder="Date"
+            name="date"
+            value={formData.date}
+            onChange={handleInputChange}
+            min={minDate}
+            max={maxDate}
+          ></DateInput>
+          
+          <FileInput
+            name="schoolLogo"
+            value={formData.schoolLogo}
+            onChange={handleInputChange}
+            accept=".jpg,.png,.svg"
+            multiple={false}
+            placeholder="Upload School Logo"
+          ></FileInput>
 
-        <StudentTable 
-          students={formData.students || [{}]}
-          onChange={handleStudentChange}
-          addRow={addRow}
-          removeRow={removeRow}
-        ></StudentTable>
+          <StudentTable 
+            students={formData.students || [{}]}
+            onChange={handleStudentChange}
+            addRow={addRow}
+            removeRow={removeRow}
+          ></StudentTable>
 
-        <button type="submit">Generate PDF</button>
-      </form>
+          <button type="submit">Generate PDF</button>
+        </form>
+      </div>      
       
       
     </>
