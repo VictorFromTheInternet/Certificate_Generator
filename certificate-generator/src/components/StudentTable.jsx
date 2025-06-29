@@ -48,7 +48,7 @@ function StudentTable({students, onChange, addRow, removeRow}) {
                                             {value: 'D', label: 'D'},
                                             {value: 'F', label: 'F'}
                                         ]}
-                                        placeholder="Select grade"
+                                        placeholder="Select"
                                     ></DropdownInput>
                                 </td>
                                 <td>                                
