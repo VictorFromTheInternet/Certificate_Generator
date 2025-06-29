@@ -15,17 +15,28 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-const MyDocument = () => (
-  <Document>
-    <Page size="A4" style={styles.page}>
-      <View style={styles.section}>
-        <Text>Section #1</Text>
-      </View>
-      <View style={styles.section}>
-        <Text>Section #2</Text>
-      </View>
-    </Page>
-  </Document>
-);
+function MyDocument({students, schoolName, schoolLogo, date}){
+
+    return(
+        <Document>
+            {students.map((student,index)=>{
+                return(
+                    <Page size="A4" style={styles.page} key={index}>                       
+                            
+                        <View style={styles.section}>
+                            <Text>Section #1</Text>
+                            <Text>Student: {student.name}</Text>
+                            <Text>Grade: {student.grade}</Text>
+                            <Text>School: {schoolName}</Text>
+                            <Text>Date: {date}</Text>
+                            {/* <Text>{schoolLogo && <img src={URL.createObjectURL(schoolLogo)} alt="School Logo" />}</Text> */}
+                        </View>
+                        
+                    </Page>
+                )
+            })}            
+        </Document>
+    )
+}
 
 export default MyDocument
