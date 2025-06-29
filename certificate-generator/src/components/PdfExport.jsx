@@ -18,10 +18,10 @@ const styles = StyleSheet.create({
 function MyDocument({students, schoolName, schoolLogo, date}){
 
     return(
-        <Document>
+        <Document >
             {students.map((student,index)=>{
                 return(
-                    <Page size="A4" style={styles.page} key={index}>                       
+                    <Page size="A4" style={styles.page} key={index} orientation="landscape">                       
                             
                         <View style={styles.section}>
                             <Text>Section #1</Text>
