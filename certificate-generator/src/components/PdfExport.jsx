@@ -19,90 +19,119 @@ Font.register({
 // Create styles
 const styles = StyleSheet.create({
   page: {
-    width: '100vw',
-    height: '100vh',
-    backgroundColor: '#FFFFFF',                    
+    width: "100vw",
+    height: "100vh",
+    backgroundColor: "#FFFFFF",
   },
   pageContent: {
-    display: 'flex',
-    flexDirection: 'column',            
-    alignContent: 'center',
-    justifyContent: 'center',
-    maxWidth: '90%',
-    height: '100vh',
-    margin: '0 auto',
-    padding: 20,
+    // display: "flex",
+    // flexDirection: "column",
+    // alignContent: "center",
+    // justifyContent: "space-between",
+    maxWidth: "80%",
+    height: "90vh",
+    margin: "5vh auto",    
     // backgroundColor: 'red',
   },
-  backgroundImage:{
-    height: '100vh',
-    width: '100vw',
+  backgroundImage: {
+    height: "100vh",
+    width: "100vw",
     zIndex: -1,
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     top: 0,
   },
-  goldFontColor:{
-    color: '#ceb988'
+  goldFontColor: {
+    color: "#ceb988",
   },
-  headingTextSerif:{
-    fontFamily: 'Times-Roman',
+  headingTextSerif: {
+    fontFamily: "Times-Roman",
     fontSize: 24,
     marginBottom: 10,
-    textAlign: 'center',
-    color: '#333'
+    textAlign: "center",
+    color: "#333",
   },
-  headingTextCursive:{
-    fontFamily: 'PinyonScript',
+  headingTextCursive: {
+    fontFamily: "PinyonScript",
     fontSize: 24,
     marginBottom: 10,
-    textAlign: 'center',
-    color: '#333'
+    textAlign: "center",
+    color: "#333",
   },
-  paragraphTextSans:{
-    fontFamily: 'Poppins',
+  paragraphTextSans: {
+    fontFamily: "Poppins",
     fontSize: 24,
     marginBottom: 10,
-    textAlign: 'center',
-    color: '#333'
+    textAlign: "center",
+    color: "#333",
   },
-  h1:{
-    fontSize: 96
+  h1: {
+    fontSize: 96,    
   },
-  h2:{
-    fontSize: 64
+  h2: {
+    fontSize: 64,
   },
-  h3:{
-    fontSize: 56
+  h3: {
+    fontSize: 48,
   },
-  h4:{
-    fontSize: 36
+  h4: {
+    fontSize: 36,
   },
-  p:{
-    fontSize: 16
+  p: {
+    fontSize: 16,    
   },
-  flexRow:{
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    gap: 32,
-    alignItems: 'center',
+  flexRow: {
+    display: "flex",
+    flexDirection: "row",    
+    gap: 32,    
+    width: "100%",
+    marginBottom: 32,
+    marginTop: 32,
   },
-  flexCol:{
+  flexCol: {
     flexGrow: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',    
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  negativeMarginBottom:{
-    marginBottom: -8
+  flexGrow:{
+    flexGrow: 1,
   },
-  negativeMarginTop:{
-    marginTop: -8
+  flexAlignStart: {
+    alignItems: "flex-start",
+  },
+  flexJustifyStart: {
+    justifyContent: "flex-start",
+  },
+  negativeMarginBottom: {
+    marginBottom: -8,
+  },
+  negativeMarginTop: {
+    marginTop: -8,
+  },
+  schoolLogoContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",                
+    height: 200,    
+    width: 150,        
+  },
+  certBadge: {            
+    height: '100%',    
+    width: '100%',
+    margin: "0 auto",      
+  },
+  schoolLogo: {
+    height: 100,
+    width: 100,
+  },
+  backgroundRed:{
+    backgroundColor: "red",
+  },
+  backgroundBlue:{
+    backgroundColor: "blue",
   }
-
-
 });
 
 // Create Document Component
@@ -121,10 +150,10 @@ function MyDocument({students, schoolName, schoolLogo, date, fromName, fromTitle
                         </View>
 
                         {/* content container */}
-                        <View style={styles.pageContent}>                        
-
-                            {/* Certificate of, title container */}
-                            <View style={[styles.flexRow]}>
+                        <View style={[styles.pageContent, styles.backgroundBlue]}>                        
+                            
+                            {/* Certificate of, title container */}                            
+                            <View style={[styles.section, styles.backgroundRed]}>
                                 <View style={styles.flexCol}>
                                     <Text style={[
                                         styles.headingTextSerif,
@@ -151,10 +180,11 @@ function MyDocument({students, schoolName, schoolLogo, date, fromName, fromTitle
                                 </View>                                
                             </View>
 
-
                             {/* Main Text Container */}
-                            <View style={[styles.flexRow]}>                                
-                                <View style={styles.flexCol}>
+                            <View style={[ styles.section, styles.backgroundRed]}>                                
+                                <View style={[
+                                    styles.flexCol, 
+                                    styles.flexJustifyStart]}>
                                         <Text style={[
                                             styles.headingTextCursive,                                 
                                             styles.h1]}>
@@ -172,30 +202,41 @@ function MyDocument({students, schoolName, schoolLogo, date, fromName, fromTitle
                             </View>
 
                             {/* Teacher, Logo, Date Container */}
-                            <View style={styles.flexRow}> 
-                                <View style={styles.flexCol}>
-                                    <Text style={[                                    
-                                        styles.headingTextCursive,                                 
-                                        styles.h4]}>{fromName}</Text>
-                                    <Text style={[
-                                        styles.paragraphTextSans,
-                                        styles.p
-                                        ]}>{fromTitle}</Text>                                
-                                </View> 
+                            <View style={[styles.section, styles.backgroundRed]}> 
+                                <View style={[styles.flexRow, styles.flexAlignStart]}>
+                                    <View style={styles.flexCol}>
+                                        <Text style={[                                    
+                                            styles.headingTextCursive,                                 
+                                            styles.h4]}>{fromName}</Text>
+                                        <Text style={[
+                                            styles.paragraphTextSans,
+                                            styles.p
+                                            ]}>{fromTitle}</Text>                                
+                                    </View> 
 
-                                <View style={styles.flexCol}>
-                                        {/* <Text>{schoolLogo && <img src={URL.createObjectURL(schoolLogo)} alt="School Logo" />}</Text> */}
-                                </View> 
+                                    <View style={styles.flexCol}>
+                                        <View style={[
+                                            styles.schoolLogoContainer
+                                        ]}>
+                                            <Image style={styles.certBadge}
+                                                src="/images/Badge.png">                                            
+                                            </Image>
+                                            <Image style={styles.schoolLogo}>
+                                                {schoolLogo && <img src={URL.createObjectURL(schoolLogo)} alt="School Logo" />}
+                                            </Image>
+                                        </View>                                        
+                                    </View> 
 
-                                <View style={styles.flexCol}>
-                                    <Text style={[
-                                        styles.headingTextCursive,                                 
-                                        styles.h4]}>{date}</Text>
-                                    <Text style={[
-                                        styles.paragraphTextSans,
-                                        styles.p
-                                        ]}>DATE AWARDED</Text>
-                                </View>                                                               
+                                    <View style={styles.flexCol}>
+                                        <Text style={[
+                                            styles.headingTextCursive,                                 
+                                            styles.h4]}>{date}</Text>
+                                        <Text style={[
+                                            styles.paragraphTextSans,
+                                            styles.p
+                                            ]}>DATE AWARDED</Text>
+                                    </View> 
+                                </View>                                                              
                                                                                                                             
                             </View>                                               
                         
