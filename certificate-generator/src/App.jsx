@@ -20,6 +20,8 @@ function App() {
   // init form data
   const [formData, setFormData] = useState({
     schoolName: 'ABC High School',
+    fromName: 'Teacher Name',
+    fromTitle: 'Math - 3rd Grade',
     date: today.toISOString().split('T')[0],
     schoolLogo: null,
     students: [{ name: '', grade: '' }]
@@ -79,6 +81,8 @@ function App() {
         <MyDocument 
           debug={true}
           schoolName={formData.schoolName}
+          fromName={formData.fromName}
+          fromTitle={formData.fromTitle}
           schoolLogo={formData.schoolLogo}
           date={formData.date}
           students={formData.students}>            
@@ -107,6 +111,18 @@ function App() {
           <TextInput placeholder="School Name"
             name="schoolName"
             value={formData.schoolName}
+            onChange={handleInputChange}
+            ></TextInput>
+          
+          <TextInput placeholder="From Name"
+            name="fromName"
+            value={formData.fromName}
+            onChange={handleInputChange}
+            ></TextInput>
+
+          <TextInput placeholder="Teacher Title"
+            name="fromTitle"
+            value={formData.fromTitle}
             onChange={handleInputChange}
             ></TextInput>
 
