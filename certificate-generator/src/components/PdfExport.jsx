@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     maxWidth: "80%",
     height: "90vh",
     margin: "5vh auto",    
+    paddingTop: 32,
     // backgroundColor: 'red',
   },
   backgroundImage: {
@@ -66,19 +67,19 @@ const styles = StyleSheet.create({
     color: "#333",
   },
   h1: {
-    fontSize: 96,    
+    fontSize: 76,    
   },
   h2: {
-    fontSize: 64,
+    fontSize: 56,
   },
   h3: {
     fontSize: 48,
   },
   h4: {
-    fontSize: 36,
+    fontSize: 24,
   },
   p: {
-    fontSize: 16,    
+    fontSize: 14,    
   },
   flexRow: {
     display: "flex",
@@ -105,17 +106,17 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
   },
   negativeMarginBottom: {
-    marginBottom: -8,
+    marginBottom: -4,
   },
   negativeMarginTop: {
-    marginTop: -8,
+    marginTop: -4,
   },
   schoolLogoContainer: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",                
     height: 200,    
-    width: 150,        
+    width: 125,        
   },
   certBadge: {            
     height: '100%',    
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-function MyDocument({students, schoolName, schoolLogo, date, fromName, fromTitle}){
+function MyDocument({students, title, subtitle, schoolName, schoolLogo, date, fromName, fromTitle}){
 
     return(
         <Document >
@@ -150,26 +151,26 @@ function MyDocument({students, schoolName, schoolLogo, date, fromName, fromTitle
                         </View>
 
                         {/* content container */}
-                        <View style={[styles.pageContent, styles.backgroundBlue]}>                        
+                        <View style={[styles.pageContent]}>                        
                             
                             {/* Certificate of, title container */}                            
-                            <View style={[styles.section, styles.backgroundRed]}>
+                            <View style={[styles.section, ]}>
                                 <View style={styles.flexCol}>
                                     <Text style={[
                                         styles.headingTextSerif,
                                         styles.goldFontColor,
                                         styles.h2,
-                                        styles.negativeMarginBottom
+                                        
                                         ]}>
-                                        CERTIFICATE
+                                        {title}
                                     </Text>
                                     <Text style={[
                                         styles.headingTextCursive,
                                         styles.goldFontColor,
                                         styles.h3,
-                                        styles.negativeMarginTop
+                                        
                                         ]}>
-                                        of achievement
+                                        {subtitle}
                                     </Text>
                                     <Text style={[
                                         styles.paragraphTextSans,
@@ -181,7 +182,7 @@ function MyDocument({students, schoolName, schoolLogo, date, fromName, fromTitle
                             </View>
 
                             {/* Main Text Container */}
-                            <View style={[ styles.section, styles.backgroundRed]}>                                
+                            <View style={[ styles.section]}>                                
                                 <View style={[
                                     styles.flexCol, 
                                     styles.flexJustifyStart]}>
@@ -202,7 +203,7 @@ function MyDocument({students, schoolName, schoolLogo, date, fromName, fromTitle
                             </View>
 
                             {/* Teacher, Logo, Date Container */}
-                            <View style={[styles.section, styles.backgroundRed]}> 
+                            <View style={[styles.section]}> 
                                 <View style={[styles.flexRow, styles.flexAlignStart]}>
                                     <View style={styles.flexCol}>
                                         <Text style={[                                    

@@ -13,9 +13,8 @@ function StudentTable({students, onChange, addRow, removeRow}) {
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Grade</th>
-                    <th>Control</th>                    
+                    <th>Name</th>                    
+                    <th>Delete</th>                    
                 </tr>
             </thead>
 
@@ -33,24 +32,7 @@ function StudentTable({students, onChange, addRow, removeRow}) {
                                         }}
                                         placeholder="Enter student name"
                                     ></TextInput>
-                                </td>
-                                <td>
-                                    <DropdownInput
-                                        name={`student-${index}-grade`}
-                                        value={student.grade}
-                                        onChange={(e)=>{
-                                            onChange(index, 'grade', e.target.value)
-                                        }}
-                                        options={[
-                                            {value: 'A', label: 'A'},
-                                            {value: 'B', label: 'B'},
-                                            {value: 'C', label: 'C'},
-                                            {value: 'D', label: 'D'},
-                                            {value: 'F', label: 'F'}
-                                        ]}
-                                        placeholder="Select"
-                                    ></DropdownInput>
-                                </td>
+                                </td>                                
                                 <td>                                
                                     <button type="button" onClick={()=>{
                                         removeRow(index)
