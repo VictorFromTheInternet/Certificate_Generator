@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",                
-    height: 200,    
+    height: 150,    
     width: 125,        
   },
   certBadge: {            
@@ -218,13 +218,12 @@ function MyDocument({students, title, subtitle, schoolName, schoolLogo, date, fr
                                     <View style={styles.flexCol}>
                                         <View style={[
                                             styles.schoolLogoContainer
-                                        ]}>
-                                            <Image style={styles.certBadge}
-                                                src="/images/Badge.png">                                            
+                                            ]}>
+
+                                            <Image style={styles.certBadge} 
+                                                src={schoolLogo ? schoolLogo : "/images/Badge.png" }>                                           
                                             </Image>
-                                            <Image style={styles.schoolLogo}>
-                                                {schoolLogo && <img src={URL.createObjectURL(schoolLogo)} alt="School Logo" />}
-                                            </Image>
+                                            
                                         </View>                                        
                                     </View> 
 

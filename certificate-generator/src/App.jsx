@@ -88,7 +88,7 @@ function App() {
           subtitle={formData.subtitle}
           fromName={formData.fromName}
           fromTitle={formData.fromTitle}
-          schoolLogo={formData.schoolLogo}
+          schoolLogo={URL.createObjectURL(formData.schoolLogo)}
           date={formData.date}
           students={formData.students}>            
           </MyDocument>
