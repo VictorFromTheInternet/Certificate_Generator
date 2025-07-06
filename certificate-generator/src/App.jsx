@@ -88,7 +88,7 @@ function App() {
           subtitle={formData.subtitle}
           fromName={formData.fromName}
           fromTitle={formData.fromTitle}
-          schoolLogo={URL.createObjectURL(formData.schoolLogo)}
+          schoolLogo={formData.schoolLogo ? URL.createObjectURL(formData.schoolLogo): "/images/Badge.png"}
           date={formData.date}
           students={formData.students}>            
           </MyDocument>
@@ -181,7 +181,7 @@ matter."
         </form>
 
         <div className="pdf-container">
-          <iframe src={pdfUrl} width="100%" height="600px"></iframe>
+          <iframe src={pdfUrl} width="100%" height="500px"></iframe>
         </div>
       </div>      
       
