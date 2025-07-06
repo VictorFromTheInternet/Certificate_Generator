@@ -1,0 +1,10 @@
+.main-container{
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media (max-width: 400px){
+    .main-container{
+        padding: 0 1rem;        
+    }
+}
