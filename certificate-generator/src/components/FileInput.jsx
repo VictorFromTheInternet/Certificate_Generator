@@ -13,7 +13,8 @@ function FileInput(props) {
     <div>
       <label htmlFor={props.name}>{props.label}</label>
       <input type="file" className="file-input"
-              name={props.name}              
+              name={props.name}   
+              id={props.name}              
               onChange={props.onChange}
               accept={props.accept}
               multiple={props.multiple}

@@ -13,6 +13,7 @@ function DateInput(props) {
       <label htmlFor={props.name}>{props.label}</label>
       <input type="date" className="date-input"
               name={props.name}
+              id={props.name}
               value={props.date}
               onChange={props.onChange}
               min={props.min}
