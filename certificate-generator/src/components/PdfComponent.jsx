@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-function PDFDoc({students, title, subtitle, schoolName, schoolLogo, date, fromName, fromTitle}){
+function PDFDoc({students, title, subtitle, presentedToParagraph, mainParagraph, schoolName, schoolLogo, date, fromName, fromTitle}){
 
     return(
         <Document >
@@ -176,7 +176,7 @@ function PDFDoc({students, title, subtitle, schoolName, schoolLogo, date, fromNa
                                         styles.paragraphTextSans,
                                         styles.p
                                         ]}>
-                                        This Certificate Is Presented To
+                                        {presentedToParagraph}
                                     </Text>
                                 </View>                                
                             </View>
@@ -195,8 +195,7 @@ function PDFDoc({students, title, subtitle, schoolName, schoolLogo, date, fromNa
                                             styles.paragraphTextSans,
                                             styles.p
                                             ]}>
-                                            This certificate is awarded in recognition of the dedication, commitment, and hard work demonstrated by the recipient. It serves as a testament to their knowledge and proficiency 
-            in the subject matter.
+                                            {mainParagraph}
 
                                         </Text> 
                                 </View>                               

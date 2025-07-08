@@ -86,6 +86,8 @@ function App() {
           debug={true}          
           title={formData.title}
           subtitle={formData.subtitle}
+          mainParagraph={formData.mainParagraph}
+          presentedToParagraph={formData.presentedToParagraph}
           fromName={formData.fromName}
           fromTitle={formData.fromTitle}
           schoolLogo={formData.schoolLogo ? URL.createObjectURL(formData.schoolLogo): "/images/Badge.png"}
