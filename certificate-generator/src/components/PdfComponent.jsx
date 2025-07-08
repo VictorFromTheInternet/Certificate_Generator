@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-function MyDocument({students, title, subtitle, schoolName, schoolLogo, date, fromName, fromTitle}){
+function PDFDoc({students, title, subtitle, schoolName, schoolLogo, date, fromName, fromTitle}){
 
     return(
         <Document >
@@ -248,4 +248,4 @@ function MyDocument({students, title, subtitle, schoolName, schoolLogo, date, fr
     )
 }
 
-export default MyDocument
+export default PDFDoc

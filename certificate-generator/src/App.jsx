@@ -5,7 +5,7 @@ import TextareaInput from './components/TextareaInput.jsx'
 import DateInput from './components/DateInput.jsx'
 import FileInput from './components/FileInput.jsx'
 import StudentTable from './components/StudentTable.jsx'
-import MyDocument from './components/pdfExport.jsx'
+import PDFDoc from './components/PdfComponent.jsx'
 import PDFViewer from '@react-pdf/renderer'
 import {pdf} from '@react-pdf/renderer'
 
