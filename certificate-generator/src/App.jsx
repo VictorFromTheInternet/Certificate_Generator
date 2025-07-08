@@ -82,7 +82,7 @@ function App() {
     // generate pdf blob and set url
     const generatePdf = async () =>{
       const blob = await pdf(
-        <MyDocument 
+        <PDFDoc 
           debug={true}          
           title={formData.title}
           subtitle={formData.subtitle}
@@ -91,7 +91,7 @@ function App() {
           schoolLogo={formData.schoolLogo ? URL.createObjectURL(formData.schoolLogo): "/images/Badge.png"}
           date={formData.date}
           students={formData.students}>            
-          </MyDocument>
+          </PDFDoc>
       ).toBlob()
 
       const url = URL.createObjectURL(blob)
