@@ -10,11 +10,13 @@ function TextareaInput(props) {
 
     return (
         <div>
+        <label htmlFor={props.name}>{props.label}</label>
         <textarea type="text" className="text-input"
                     name={props.name}
                     value={props.value}
                     onChange={props.onChange}
-                    placeholder={props.placeholder}                    
+                    placeholder={props.placeholder}    
+                    rows={props.rows}                
                     />
         </div>
     )

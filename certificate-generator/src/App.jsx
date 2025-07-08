@@ -114,70 +114,108 @@ function App() {
       <div className="main-container">
         <form onSubmit={handleSubmit}>          
 
-          <TextInput placeholder="Title"
-            name="title"
-            value={formData.title}
-            onChange={handleInputChange}
-            ></TextInput>
+          <div className="flex-row">
+
+            <div className="flex-col">
+              <TextInput placeholder="Title"
+              name="title"
+              label="Title:"
+              value={formData.title}
+              onChange={handleInputChange}
+              ></TextInput>
+            </div>
+            
+            <div className="flex-col">
+              <TextInput placeholder="Subtitle"
+                name="subtitle"
+                label="Subtitle:"
+                value={formData.subtitle}
+                onChange={handleInputChange}
+                ></TextInput>
+            </div>
+            
+            <div className="flex-col">
+              <TextInput placeholder="This Certificate Is Presented To"
+                name="presentedToParagraph"
+                label="Presented To ...:"
+                value={formData.presentedToParagraph}
+                onChange={handleInputChange}
+                ></TextInput>
+            </div>
+                        
+          </div>
           
-          <TextInput placeholder="Subtitle"
-            name="subtitle"
-            value={formData.subtitle}
-            onChange={handleInputChange}
-            ></TextInput>
+          <div className="flex-row">
+            <div className="flex-col">
+              <TextareaInput             
+                placeholder="This certificate is awarded in recognition of the dedication, commitment, and hard work demonstrated by the recipient. It serves as a testament to their knowledge and proficiency in the subject
+    matter."
+                name="mainParagraph"
+                label="Main Paragraph:"
+                value={formData.mainParagraph}
+                onChange={handleInputChange}
+                rows={5}
+                ></TextareaInput>
+            </div>
+            
+          </div>
 
-          <TextInput placeholder="This Certificate Is Presented To"
-            name="presentedToParagraph"
-            value={formData.presentedToParagraph}
-            onChange={handleInputChange}
-            ></TextInput>
+          <div className="flex-row">
+            <div className="flex-col">
+              <TextInput placeholder="From Name"
+                name="fromName"
+                label="From Name:"
+                value={formData.fromName}
+                onChange={handleInputChange}
+                ></TextInput>
+            </div>            
+
+            <div className="flex-col">
+              <TextInput placeholder="Teacher Title"
+                name="fromTitle"
+                label="From Title:"
+                value={formData.fromTitle}
+                onChange={handleInputChange}
+                ></TextInput>
+            </div>            
+
+            <div className="flex-col">
+              <DateInput
+                placeholder="Date"
+                name="date"
+                label="Date Awarded:"
+                value={formData.date}
+                onChange={handleInputChange}
+                min={minDate}
+                max={maxDate}
+              ></DateInput>
+            </div>      
+
+            <div className="flex-col">
+              <FileInput
+                name="schoolLogo"
+                label="School Logo (png, svg, jpg):"
+                value={formData.schoolLogo}
+                onChange={handleInputChange}
+                accept=".jpg,.png,.svg"
+                multiple={false}
+                placeholder="Upload School Logo"
+              ></FileInput>  
+            </div>      
+
+          </div>                        
+                
+          <div className="table-container">
+            <StudentTable 
+              students={formData.students || [{}]}
+              onChange={handleStudentChange}
+              addRow={addRow}
+              removeRow={removeRow}
+            ></StudentTable>
+          </div>
           
-          <TextareaInput             
-            placeholder="This certificate is awarded in recognition of the dedication, commitment, and hard work demonstrated by the recipient. It serves as a testament to their knowledge and proficiency in the subject
-matter."
-            name="mainParagraph"
-            value={formData.mainParagraph}
-            onChange={handleInputChange}
-            ></TextareaInput>
 
-          <TextInput placeholder="From Name"
-            name="fromName"
-            value={formData.fromName}
-            onChange={handleInputChange}
-            ></TextInput>
-
-          <TextInput placeholder="Teacher Title"
-            name="fromTitle"
-            value={formData.fromTitle}
-            onChange={handleInputChange}
-            ></TextInput>
-
-          <DateInput
-            placeholder="Date"
-            name="date"
-            value={formData.date}
-            onChange={handleInputChange}
-            min={minDate}
-            max={maxDate}
-          ></DateInput>
-          
-          <FileInput
-            name="schoolLogo"
-            value={formData.schoolLogo}
-            onChange={handleInputChange}
-            accept=".jpg,.png,.svg"
-            multiple={false}
-            placeholder="Upload School Logo"
-          ></FileInput>
-
-          <StudentTable 
-            students={formData.students || [{}]}
-            onChange={handleStudentChange}
-            addRow={addRow}
-            removeRow={removeRow}
-          ></StudentTable>
-
-          <button type="submit">Generate PDF</button>
+          <button type="submit" className="btn-submit">Generate PDF</button>
         </form>
 
         <div className="pdf-container">

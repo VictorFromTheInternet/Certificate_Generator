@@ -1,6 +1,85 @@
+:root{
+    --btn-default-color: rgb(11, 94, 215);
+    --btn-danger-color: rgb(215, 11, 11);
+    --btn-submit-color: rgb(21, 115, 71);
+}
+
 .main-container{
     width: 80%;
     margin: 0 auto;
+}
+
+/* row styles */
+.flex-row{
+    display: flex;    
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+.flex-col{
+    flex-grow: 1;
+}
+
+
+/* Table styles */
+.table-container{
+    margin: 1rem 0;
+}
+
+
+/* input & label styles */
+label{
+    display: block;
+    font-family: 'Roboto', sans-serif;
+}
+input, textarea{
+    display: flex;
+    padding: .5rem;
+    width: calc(100% - 1rem);     
+    border-radius: 6px; 
+    border-width: 1px;
+    font-family: 'Roboto', sans-serif;
+}
+th, td{
+    font-family: 'Roboto', sans-serif;
+}
+button{
+    padding:.5rem 1rem;
+    border-radius: 6px;
+    border-width: 2px;
+
+    /* background-color: var(--btn-default-color); */
+    color: var(--btn-default-color);
+    background-color: white;
+    border-color: var(--btn-default-color);
+    font-weight: bold;
+
+    transition: 200ms all ease-out; 
+}
+button:hover{
+    filter: grayscale(50%);
+    cursor: pointer;
+    /* background-color: grayscale(80%); */
+}
+button[class~="btn-danger"]{
+    background-color: white;
+    color: var(--btn-danger-color);
+    border-color: var(--btn-danger-color);
+}
+button[class~="btn-submit"]{
+    background-color: var(--btn-submit-color);
+    color: white;
+    border-color: var(--btn-submit-color);
+
+    margin-top: 3rem;
+}
+
+/* pdf container */
+.pdf-container{
+    background-color: rgba(100,100,100,1);
 }
 
 @media (max-width: 400px){

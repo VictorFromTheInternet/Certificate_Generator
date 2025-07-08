@@ -11,6 +11,7 @@ function FileInput(props) {
 
   return (
     <div>
+      <label htmlFor={props.name}>{props.label}</label>
       <input type="file" className="file-input"
               name={props.name}              
               onChange={props.onChange}

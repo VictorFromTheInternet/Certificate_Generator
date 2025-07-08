@@ -6,10 +6,7 @@ import DropdownInput from './DropdownInput.jsx'
 
 function StudentTable({students, onChange, addRow, removeRow}) {
   return (
-    <div className="table-container">
-        <div className="table-controls-container">
-            <button type="button" onClick={addRow}>Add Row</button>    
-        </div>
+    <div className="table-container">              
         <table>
             <thead>
                 <tr>
@@ -34,7 +31,7 @@ function StudentTable({students, onChange, addRow, removeRow}) {
                                     ></TextInput>
                                 </td>                                
                                 <td>                                
-                                    <button type="button" onClick={()=>{
+                                    <button type="button" className="btn-danger" onClick={()=>{
                                         removeRow(index)
                                     }}>Delete</button>
                                 </td>
@@ -44,6 +41,9 @@ function StudentTable({students, onChange, addRow, removeRow}) {
                 }
             </tbody>
         </table>
+        <div className="table-controls-container">
+            <button type="button" onClick={addRow}>Add Row</button>    
+        </div>
     </div>
   )
 }

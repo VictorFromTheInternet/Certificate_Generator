@@ -10,6 +10,7 @@ function DateInput(props) {
 
   return (
     <div>
+      <label htmlFor={props.name}>{props.label}</label>
       <input type="date" className="date-input"
               name={props.name}
               value={props.date}
