@@ -4,9 +4,10 @@ import './StudentTable.css'
 import TextInput from './TextInput.jsx'
 import DropdownInput from './DropdownInput.jsx'
 
-function StudentTable({students, onChange, addRow, removeRow}) {
+function StudentTable({label, students, onChange, addRow, removeRow}) {
   return (
-    <div className="table-container">              
+    <div className="table-container">      
+        <label htmlFor="">{label}</label>        
         <table>
             <thead>
                 <tr>
@@ -42,7 +43,7 @@ function StudentTable({students, onChange, addRow, removeRow}) {
             </tbody>
         </table>
         <div className="table-controls-container">
-            <button type="button" onClick={addRow}>Add Row</button>    
+            <button type="button" onClick={addRow}>Add Student</button>    
         </div>
     </div>
   )

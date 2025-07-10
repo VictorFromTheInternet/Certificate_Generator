@@ -11,8 +11,11 @@ import {pdf} from '@react-pdf/renderer'
 
 function App() {
   const today = new Date()
-  const minDate = new Date(today.getFullYear() - 4, today.getMonth(), today.getDate()).toISOString().split('T')[0]
-  const maxDate = new Date().toISOString().split('T')[0]
+  const currYear = String(today.getFullYear()).padStart(2,'0')
+  const currMonth = String(today.getMonth()).padStart(2, '0') 
+  const currDay = String(today.getDate()).padStart(2, '0')
+  const minDate = `${String(currYear - 4).padStart(2,'0')}-${currMonth}-${currDay}`
+  const maxDate = `${currYear}-${currMonth}-${currDay}`
 
   const [pdfUrl, setPdfUrl] = useState(null)
   const pdfUrlRef = useRef()
@@ -26,7 +29,7 @@ function App() {
     mainParagraph: 'This certificate is awarded in recognition of the dedication, commitment, and hard work demonstrated by the recipient. It serves as a testament to their knowledge and proficiency in the subject matter.',
     fromName: 'Teacher Name',
     fromTitle: 'Math - 3rd Grade',
-    date: today.toISOString().split('T')[0],
+    date: `${currYear}-${currMonth}-${currDay}`,
     schoolLogo: null,
     students: [{ name: '', grade: '' }]
   })
@@ -114,111 +117,116 @@ function App() {
   return (
     <>      
       <div className="main-container">
-        <form onSubmit={handleSubmit}>          
+        <div className="card">
+          <form onSubmit={handleSubmit}> 
 
-          <div className="flex-row">
+            <h1 className="title">Certificate Generator</h1>         
 
-            <div className="flex-col">
-              <TextInput placeholder="Title"
-              name="title"
-              label="Title:"
-              value={formData.title}
-              onChange={handleInputChange}
-              ></TextInput>
+            <div className="flex-row">
+
+              <div className="flex-col">
+                <TextInput placeholder="Title"
+                name="title"
+                label="Title:"
+                value={formData.title}
+                onChange={handleInputChange}
+                ></TextInput>
+              </div>
+              
+              <div className="flex-col">
+                <TextInput placeholder="Subtitle"
+                  name="subtitle"
+                  label="Subtitle:"
+                  value={formData.subtitle}
+                  onChange={handleInputChange}
+                  ></TextInput>
+              </div>
+              
+              <div className="flex-col">
+                <TextInput placeholder="This Certificate Is Presented To"
+                  name="presentedToParagraph"
+                  label="Presented To ...:"
+                  value={formData.presentedToParagraph}
+                  onChange={handleInputChange}
+                  ></TextInput>
+              </div>
+                          
             </div>
             
-            <div className="flex-col">
-              <TextInput placeholder="Subtitle"
-                name="subtitle"
-                label="Subtitle:"
-                value={formData.subtitle}
-                onChange={handleInputChange}
-                ></TextInput>
+            <div className="flex-row">
+              <div className="flex-col">
+                <TextareaInput             
+                  placeholder="This certificate is awarded in recognition of the dedication, commitment, and hard work demonstrated by the recipient. It serves as a testament to their knowledge and proficiency in the subject
+      matter."
+                  name="mainParagraph"
+                  label="Main Paragraph:"
+                  value={formData.mainParagraph}
+                  onChange={handleInputChange}
+                  rows={5}
+                  ></TextareaInput>
+              </div>
+              
+            </div>
+
+            <div className="flex-row">
+              <div className="flex-col">
+                <TextInput placeholder="From Name"
+                  name="fromName"
+                  label="From Name:"
+                  value={formData.fromName}
+                  onChange={handleInputChange}
+                  ></TextInput>
+              </div>            
+
+              <div className="flex-col">
+                <TextInput placeholder="Teacher Title"
+                  name="fromTitle"
+                  label="From Title:"
+                  value={formData.fromTitle}
+                  onChange={handleInputChange}
+                  ></TextInput>
+              </div>            
+
+              <div className="flex-col">
+                <DateInput
+                  placeholder="Date"
+                  name="date"
+                  label="Date Awarded:"
+                  value={formData.date}
+                  onChange={handleInputChange}
+                  min={minDate}
+                  max={maxDate}
+                ></DateInput>
+              </div>      
+
+              <div className="flex-col">
+                <FileInput
+                  name="schoolLogo"
+                  label="School Logo (png, svg, jpg):"
+                  value={formData.schoolLogo}
+                  onChange={handleInputChange}
+                  accept=".jpg,.png,.svg"
+                  multiple={false}
+                  placeholder="Upload School Logo"
+                ></FileInput>  
+              </div>      
+
+            </div>                        
+                  
+            <div className="table-container">
+              <StudentTable 
+                label="Students:"
+                students={formData.students || [{}]}
+                onChange={handleStudentChange}
+                addRow={addRow}
+                removeRow={removeRow}
+              ></StudentTable>
             </div>
             
-            <div className="flex-col">
-              <TextInput placeholder="This Certificate Is Presented To"
-                name="presentedToParagraph"
-                label="Presented To ...:"
-                value={formData.presentedToParagraph}
-                onChange={handleInputChange}
-                ></TextInput>
-            </div>
-                        
-          </div>
-          
-          <div className="flex-row">
-            <div className="flex-col">
-              <TextareaInput             
-                placeholder="This certificate is awarded in recognition of the dedication, commitment, and hard work demonstrated by the recipient. It serves as a testament to their knowledge and proficiency in the subject
-    matter."
-                name="mainParagraph"
-                label="Main Paragraph:"
-                value={formData.mainParagraph}
-                onChange={handleInputChange}
-                rows={5}
-                ></TextareaInput>
-            </div>
-            
-          </div>
 
-          <div className="flex-row">
-            <div className="flex-col">
-              <TextInput placeholder="From Name"
-                name="fromName"
-                label="From Name:"
-                value={formData.fromName}
-                onChange={handleInputChange}
-                ></TextInput>
-            </div>            
-
-            <div className="flex-col">
-              <TextInput placeholder="Teacher Title"
-                name="fromTitle"
-                label="From Title:"
-                value={formData.fromTitle}
-                onChange={handleInputChange}
-                ></TextInput>
-            </div>            
-
-            <div className="flex-col">
-              <DateInput
-                placeholder="Date"
-                name="date"
-                label="Date Awarded:"
-                value={formData.date}
-                onChange={handleInputChange}
-                min={minDate}
-                max={maxDate}
-              ></DateInput>
-            </div>      
-
-            <div className="flex-col">
-              <FileInput
-                name="schoolLogo"
-                label="School Logo (png, svg, jpg):"
-                value={formData.schoolLogo}
-                onChange={handleInputChange}
-                accept=".jpg,.png,.svg"
-                multiple={false}
-                placeholder="Upload School Logo"
-              ></FileInput>  
-            </div>      
-
-          </div>                        
-                
-          <div className="table-container">
-            <StudentTable 
-              students={formData.students || [{}]}
-              onChange={handleStudentChange}
-              addRow={addRow}
-              removeRow={removeRow}
-            ></StudentTable>
-          </div>
-          
-
-          <button type="submit" className="btn-submit">Generate PDF</button>
-        </form>
+            <button type="submit" className="btn-submit">Generate PDF</button>
+          </form> 
+        </div>        
 
         <div className="pdf-container">
           <iframe src={pdfUrl} width="100%" height="500px"></iframe>
