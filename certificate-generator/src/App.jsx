@@ -9,13 +9,32 @@ import PDFDoc from './components/PdfComponent.jsx'
 import PDFViewer from '@react-pdf/renderer'
 import {pdf} from '@react-pdf/renderer'
 
-function App() {
-  const today = new Date()
-  const currYear = String(today.getFullYear()).padStart(2,'0')
-  const currMonth = String(today.getMonth()).padStart(2, '0') 
-  const currDay = String(today.getDate()).padStart(2, '0')
-  const minDate = `${String(currYear - 4).padStart(2,'0')}-${currMonth}-${currDay}`
-  const maxDate = `${currYear}-${currMonth}-${currDay}`
+function App() {  
+  // const today = new Date().toLocaleDateString()
+  // const currYear = today.split('/')[2].padStart(2,'0')
+  // const currMonth = today.split('/')[0].padStart(2, '0') 
+  // const currDay = today.split('/')[1].padStart(2, '0')
+  // const minDate = `${String(currYear - 4).padStart(2,'0')}-${currMonth}-${currDay}`
+  // const maxDate = `${currYear}/${currMonth}/${currDay}`
+  
+  const maxDate = [
+    new Date().getFullYear(),
+    String(new Date().getMonth() + 1).padStart(2, '0'),
+    String(new Date().getDate()).padStart(2, '0')
+  ].join('-');
+
+  const minDate = [
+    new Date().getFullYear() - 4,
+    String(new Date().getMonth() + 1).padStart(2, '0'),
+    String(new Date().getDate()).padStart(2, '0')
+  ].join('-');  
+
+  function formatDate(date){
+    const year = date.split('-')[0]
+    const month = date.split('-')[1].padStart(2, '0')
+    const day = date.split('-')[2].padStart(2, '0')
+    return `${month}/${day}/${year}`
+  }
 
   const [pdfUrl, setPdfUrl] = useState(null)
   const pdfUrlRef = useRef()
@@ -29,7 +48,7 @@ function App() {
     mainParagraph: 'This certificate is awarded in recognition of the dedication, commitment, and hard work demonstrated by the recipient. It serves as a testament to their knowledge and proficiency in the subject matter.',
     fromName: 'Teacher Name',
     fromTitle: 'Math - 3rd Grade',
-    date: `${currYear}-${currMonth}-${currDay}`,
+    date: maxDate,
     schoolLogo: null,
     students: [{ name: '', grade: '' }]
   })
@@ -94,7 +113,7 @@ function App() {
           fromName={formData.fromName}
           fromTitle={formData.fromTitle}
           schoolLogo={formData.schoolLogo ? URL.createObjectURL(formData.schoolLogo): "/images/Badge.png"}
-          date={formData.date}
+          date={ formatDate(formData.date) }
           students={formData.students}>            
           </PDFDoc>
       ).toBlob()
