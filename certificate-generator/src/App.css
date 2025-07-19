@@ -37,8 +37,15 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 .main-container{
+    max-width: 900px;
     width: 80%;
     margin: 0 auto;
+    min-height: 100vh;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .card{
     background-color: white;
@@ -46,6 +53,7 @@ body{
     border-radius: .5rem;
     box-shadow: 0 5px 10px rgba(0,0,0,.25);
     margin: 1rem 0;
+    /* width: 100%; */
 }
 .title{
     text-align: center;
@@ -150,10 +158,63 @@ button[class~="btn-submit"]:hover{
 /* pdf container */
 .pdf-container{
     background-color: rgba(100,100,100,1);
+    width: 100%;
+    margin-bottom: 100px;
+
+    height: 70vh;
+    max-height: 1080px;
+    
+}
+.pdf-container iframe{
+    height: 70vh;
+    max-height: 1080px;    
+}
+
+/* credits */
+.credit{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1000;
+  color: white;
+  padding: 0.5rem 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  background: linear-gradient(0deg, rgba(0,0,0,.85), rgba(0,0,0,0));
+}
+.credit a{
+  color: white;
 }
 
 @media (max-width: 400px){
     .main-container{
         padding: 0 1rem;        
     }
+}
+
+
+/* webkit scroll bar */
+/* Custom scrollbar for Webkit browsers (Chrome, Edge, Safari) */
+body::-webkit-scrollbar,
+iframe::-webkit-scrollbar {
+  width: 12px;
+  background: rgba(40,40,40,1);
+}
+
+body::-webkit-scrollbar-thumb,
+iframe::-webkit-scrollbar-thumb {
+  background: rgba(187,58, 168,1);
+  border-radius: 6px;
+  
+}
+
+body::-webkit-scrollbar-thumb:hover,
+iframe::-webkit-scrollbar-thumb:hover {  
+  background: rgba(187,58, 168,.75);
 }

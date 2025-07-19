@@ -8,6 +8,7 @@ import StudentTable from './components/StudentTable.jsx'
 import PDFDoc from './components/PdfComponent.jsx'
 import PDFViewer from '@react-pdf/renderer'
 import {pdf} from '@react-pdf/renderer'
+import Credits from './components/Credits.jsx'
 
 function App() {  
   // const today = new Date().toLocaleDateString()
@@ -247,11 +248,12 @@ function App() {
           </form> 
         </div>        
 
-        <div className="pdf-container">
+        <div className="pdf-container" hidden={pdfUrl == null ? true : false} >
           <iframe src={pdfUrl} width="100%" height="500px"></iframe>
         </div>
       </div>      
       
+      <Credits></Credits>
       
     </>
   )
