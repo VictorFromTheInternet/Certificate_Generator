@@ -39,7 +39,7 @@ body{
 .main-container{
     max-width: 900px;
     width: 80%;
-    margin: 0 auto;
+    margin: 0 auto 100px auto;
     min-height: 100vh;
     
     display: flex;
@@ -158,8 +158,7 @@ button[class~="btn-submit"]:hover{
 /* pdf container */
 .pdf-container{
     background-color: rgba(100,100,100,1);
-    width: 100%;
-    margin-bottom: 100px;
+    width: 100%;    
 
     height: 70vh;
     max-height: 1080px;
@@ -192,9 +191,17 @@ button[class~="btn-submit"]:hover{
   color: white;
 }
 
-@media (max-width: 400px){
+@media (max-width: 600px){
     .main-container{
         padding: 0 1rem;        
+    }
+    .credit{
+        font-size: .85rem;
+        gap: .5rem;
+    }
+    .credit img{
+        height: 30px;
+        width: 30px;
     }
 }
 
