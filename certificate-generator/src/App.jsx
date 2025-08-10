@@ -54,6 +54,7 @@ function App() {
     students: [{ name: '', grade: '' }],
     excelColumnName: '',
     excelSheetName: '',
+    studentExcel: null,
   })
 
   // handle inputs
@@ -262,8 +263,7 @@ function App() {
                   onChange={handleInputChange}
                   required={false}
                   ></TextInput>
-              </div>
-              <div className="flex-col">
+
                 <TextInput placeholder=""
                   name="excelSheetName"
                   label="Excel Sheet Name:"
@@ -271,7 +271,17 @@ function App() {
                   onChange={handleInputChange}
                   required={false}
                   ></TextInput>
-              </div>
+
+                <FileInput
+                  name="studentExcel"
+                  label="Excel File:"
+                  value={formData.studentExcel}
+                  onChange={handleInputChange}
+                  accept=".csv,.xlsx"
+                  multiple={false}
+                  placeholder="Upload Excel File"
+                ></FileInput>  
+              </div>              
             </div>                  
             
 
