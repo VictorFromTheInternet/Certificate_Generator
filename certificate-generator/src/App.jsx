@@ -1,5 +1,5 @@
 import './App.css'
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import TextInput from './components/TextInput.jsx'
 import TextareaInput from './components/TextareaInput.jsx'
 import DateInput from './components/DateInput.jsx'
@@ -9,6 +9,7 @@ import PDFDoc from './components/PdfComponent.jsx'
 import PDFViewer from '@react-pdf/renderer'
 import {pdf} from '@react-pdf/renderer'
 import Credits from './components/Credits.jsx'
+import * as XLSX from 'xlsx'
 
 function App() {  
   // const today = new Date().toLocaleDateString()
@@ -53,8 +54,9 @@ function App() {
     schoolLogo: null,
     students: [{ name: '', grade: '' }],
     excelColumnName: '',
-    excelSheetName: '',
+    excelSheetName: 'Sheet1',
     studentExcel: null,
+    studentExcelJson: [],
   })
 
   // handle inputs
@@ -91,6 +93,33 @@ function App() {
       students: prev.students.filter((_, i) => i !== idx)
     }));
   };
+
+
+  // handle excel upload
+  useEffect(()=>{
+    if(excelColumnName && excelSheetName && studentExcel){
+      try{
+        async function addExcelData(){
+          const file = formData.studentExcel
+          const data = await file.arrayBuffer()
+          const workbook = XLSX.read(data, {type: 'array'})
+          console.log(workbook)
+
+          const sheetName = formData.excelSheetName || workbook.SheetNames[0]
+          const worksheet = workbook.Sheets[sheetName]
+
+          console.log(worksheet)
+        }
+
+        addExcelData()
+
+      }catch(err){
+        window.alert('Error uploading excel file, mb g')
+        console.error(err)
+      }           
+    }
+
+  }, [formData.excelColumnName, formData.excelSheetName, formData.studentExcel])
 
 
   // generate pdf btn
