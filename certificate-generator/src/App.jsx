@@ -59,6 +59,8 @@ function App() {
     studentExcelJson: [],
   })
 
+  const [addExcelData, setAddExcelData] = useState(false)
+
   // handle inputs
   const handleInputChange = (e) => {
     const { name, value, type, files } = e.target;
@@ -100,6 +102,7 @@ function App() {
     if(formData.excelColumnName && formData.excelSheetName && formData.studentExcel ){
       try{
         async function addExcelData(){
+          // get excel data
           const file = formData.studentExcel
           const data = await file.arrayBuffer()
           const workbook = XLSX.read(data, {type: 'array'})
@@ -107,8 +110,26 @@ function App() {
 
           const sheetName = formData.excelSheetName || workbook.SheetNames[0]
           const worksheet = workbook.Sheets[sheetName]
+          const worksheetJson = XLSX.utils.sheet_to_json(worksheet)
+          console.log(worksheetJson)                  
 
-          console.log(worksheet)
+          // append to temp
+          let tempStudents = []
+          for(let i=0; i<worksheetJson.length; i++){
+            const tempName = worksheetJson[i][`${formData.excelColumnName}`]
+            tempStudents.push({name: tempName, grade: ''})
+            console.log(tempStudents)
+          }
+
+          // update studentExcelJson & students
+          setFormData(prev => {
+            return {
+              ...prev,
+              studentExcelJson: tempStudents,
+              students: [...prev.students, ...tempStudents]
+            }
+          })
+
         }
 
         addExcelData()
