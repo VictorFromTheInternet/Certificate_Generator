@@ -97,7 +97,7 @@ function App() {
 
   // handle excel upload
   useEffect(()=>{
-    if(excelColumnName && excelSheetName && studentExcel){
+    if(formData.excelColumnName && formData.excelSheetName && formData.studentExcel ){
       try{
         async function addExcelData(){
           const file = formData.studentExcel
