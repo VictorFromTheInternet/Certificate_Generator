@@ -51,7 +51,9 @@ function App() {
     fromTitle: 'Math - 3rd Grade',
     date: maxDate,
     schoolLogo: null,
-    students: [{ name: '', grade: '' }]
+    students: [{ name: '', grade: '' }],
+    excelColumnName: '',
+    excelSheetName: '',
   })
 
   // handle inputs
@@ -150,6 +152,7 @@ function App() {
                 label="Title:"
                 value={formData.title}
                 onChange={handleInputChange}
+                required={true}
                 ></TextInput>
               </div>
               
@@ -159,6 +162,7 @@ function App() {
                   label="Subtitle:"
                   value={formData.subtitle}
                   onChange={handleInputChange}
+                  required={true}
                   ></TextInput>
               </div>
               
@@ -168,6 +172,7 @@ function App() {
                   label="Presented To ...:"
                   value={formData.presentedToParagraph}
                   onChange={handleInputChange}
+                  required={true}
                   ></TextInput>
               </div>
                           
@@ -183,6 +188,7 @@ function App() {
                   value={formData.mainParagraph}
                   onChange={handleInputChange}
                   rows={5}
+                  required={true}
                   ></TextareaInput>
               </div>
               
@@ -195,6 +201,7 @@ function App() {
                   label="From Name:"
                   value={formData.fromName}
                   onChange={handleInputChange}
+                  required={true}
                   ></TextInput>
               </div>            
 
@@ -232,16 +239,40 @@ function App() {
               </div>      
 
             </div>                        
-                  
-            <div className="table-container">
-              <StudentTable 
-                label="Students:"
-                students={formData.students || [{}]}
-                onChange={handleStudentChange}
-                addRow={addRow}
-                removeRow={removeRow}
-              ></StudentTable>
-            </div>
+
+            <div className="flex-row">
+              <div className="flex-col">
+                <div className="table-container">
+                  <StudentTable 
+                    label="Students:"
+                    students={formData.students || [{}]}
+                    onChange={handleStudentChange}
+                    addRow={addRow}
+                    removeRow={removeRow}
+                    required={true}
+                  ></StudentTable>
+                </div>
+              </div>  
+
+              <div className="flex-col">
+                <TextInput placeholder=""
+                  name="excelColumnName"
+                  label="Excel Column Name:"
+                  value={formData.excelColumnName}
+                  onChange={handleInputChange}
+                  required={false}
+                  ></TextInput>
+              </div>
+              <div className="flex-col">
+                <TextInput placeholder=""
+                  name="excelSheetName"
+                  label="Excel Sheet Name:"
+                  value={formData.excelSheetName}
+                  onChange={handleInputChange}
+                  required={false}
+                  ></TextInput>
+              </div>
+            </div>                  
             
 
             <button type="submit" className="btn-submit">Generate PDF</button>

@@ -19,6 +19,7 @@ function DateInput(props) {
               min={props.min}
               max={props.max}
               placeholder={props.placeholder}
+              required={props.required}
               />
     </div>
   )

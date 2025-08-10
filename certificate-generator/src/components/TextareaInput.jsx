@@ -17,7 +17,8 @@ function TextareaInput(props) {
                     value={props.value}
                     onChange={props.onChange}
                     placeholder={props.placeholder}    
-                    rows={props.rows}                
+                    rows={props.rows}   
+                    required={props.required}             
                     />
         </div>
     )

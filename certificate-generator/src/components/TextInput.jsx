@@ -16,7 +16,8 @@ function TextInput(props) {
                     id={props.name}
                     value={props.value}
                     onChange={props.onChange}
-                    placeholder={props.placeholder}                    
+                    placeholder={props.placeholder}  
+                    required={props.required}                  
                     />
         </div>
     )

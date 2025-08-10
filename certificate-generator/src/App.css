@@ -78,6 +78,9 @@ body{
 .table-container{
     margin: 1rem 0;
 }
+.table-container table{
+    width: 100%;
+}
 
 
 /* input & label styles */

@@ -18,7 +18,9 @@ function FileInput(props) {
               onChange={props.onChange}
               accept={props.accept}
               multiple={props.multiple}
-              placeholder={props.placeholder}/>
+              placeholder={props.placeholder}
+              required={props.required}
+              />
     </div>
   )
 }

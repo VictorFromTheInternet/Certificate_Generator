@@ -4,7 +4,7 @@ import './StudentTable.css'
 import TextInput from './TextInput.jsx'
 import DropdownInput from './DropdownInput.jsx'
 
-function StudentTable({label, students, onChange, addRow, removeRow}) {
+function StudentTable({label, students, onChange, addRow, removeRow, required}) {
   return (
     <div className="table-container">      
         <label htmlFor="">{label}</label>        
@@ -29,6 +29,7 @@ function StudentTable({label, students, onChange, addRow, removeRow}) {
                                             onChange(index, 'name', e.target.value)
                                         }}
                                         placeholder="Enter student name"
+                                        required={required}
                                     ></TextInput>
                                 </td>                                
                                 <td>                                
