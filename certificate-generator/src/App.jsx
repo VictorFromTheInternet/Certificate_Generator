@@ -235,7 +235,7 @@ function App() {
               <div className="flex-col">
                 <TextInput placeholder="This Certificate Is Presented To"
                   name="presentedToParagraph"
-                  label="Presented To ...:"
+                  label="Presented To:"
                   value={formData.presentedToParagraph}
                   onChange={handleInputChange}
                   required={true}
