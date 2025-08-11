@@ -347,7 +347,7 @@ function App() {
                   placeholder="Upload Excel File"
                 ></FileInput>  
 
-                <button disabled={addExcelDisabled} onClick={appendExcelData}>
+                <button disabled={addExcelDisabled} onClick={appendExcelData} className={`${addExcelDisabled? "btn-disabled" :""} `}>
                   Add students
                 </button>
               </div>              

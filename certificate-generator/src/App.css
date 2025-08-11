@@ -1,6 +1,10 @@
 :root{
     --btn-default-color: rgb(11, 94, 215);
+    --btn-default-bgcolor: rgba(11, 94, 215,.15);
     --btn-danger-color: rgb(215, 11, 11);
+    --btn-danger-bgcolor: rgba(215, 11, 11,.15);
+    --btn-disabled-color: rgb(100, 100, 100);
+    --btn-disabled-bgcolor: rgba(200, 200, 200,.15);
     --btn-submit-color: rgb(21, 115, 71);
 
     --light-purple: rgba(145, 152, 229,.5);    
@@ -63,7 +67,7 @@ body{
 .flex-row{
     display: flex;    
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 1rem;
     margin: 1rem 0;
@@ -75,9 +79,9 @@ body{
 
 
 /* Table styles */
-.table-container{
+/* .table-container{
     margin: 1rem 0;
-}
+} */
 .table-container table{
     width: 100%;
 }
@@ -87,6 +91,7 @@ body{
 label{
     display: block;
     font-family: 'Roboto', sans-serif;
+    margin: .5rem 0 0 0;
 }
 input, textarea{
     display: flex;
@@ -113,26 +118,26 @@ button{
     border-color: var(--btn-default-color);
     font-weight: bold;
 
+    cursor: pointer;
     transition: 200ms all ease-out; 
 }
-button:hover{
-    filter: grayscale(50%);
-    cursor: pointer;
-    /* background-color: grayscale(80%); */
+button:hover{    
+    background-color: var(--btn-default-bgcolor);
 }
 button[class~="btn-danger"]{
     background-color: white;
     color: var(--btn-danger-color);
     border-color: var(--btn-danger-color);
 }
-/* button[class~="btn-submit"]{
-    background-color: var(--btn-submit-color);
-    color: white;
-    border-color: var(--btn-submit-color);
-
-    margin-top: 3rem;
-    width: 100%;
-} */
+button[class~="btn-danger"]:hover{        
+    background-color: var(--btn-danger-bgcolor);;
+}
+button[class~="btn-disabled"]{
+    background-color: var(--btn-disabled-bgcolor);
+    color: black;
+    border-color: var(--btn-disabled-color);
+    cursor: not-allowed;
+}
 button[class~="btn-submit"]{
     display: inline-block;
     padding: .5rem 1.5rem;
@@ -148,8 +153,7 @@ button[class~="btn-submit"]{
     background-position: left;
 
     border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
+    border-radius: 0.5rem;    
 
     transition: background-position 0.3s ease-out;
 }
