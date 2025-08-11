@@ -60,6 +60,7 @@ function App() {
   })
 
   const [addExcelDisabled, setAddExcelDisabled] = useState(true)
+  const [showExcelFields, setShowExcelFields] = useState(false)
 
   // handle inputs
   const handleInputChange = (e) => {
@@ -321,35 +322,44 @@ function App() {
               </div>  
 
               <div className="flex-col">
-                <TextInput placeholder=""
-                  name="excelColumnName"
-                  label="Excel Column Name:"
-                  value={formData.excelColumnName}
-                  onChange={handleInputChange}
-                  required={false}
-                  ></TextInput>
+                <div className="field-checkbox">
+                  <input type="checkbox" name="showExcelFields" checked={showExcelFields} onChange={(e)=>{setShowExcelFields(e.target.checked)}}/>
+                  <label for="showExcelFields">Upload column from Excel?</label>
+                </div>
+                {showExcelFields && 
+                  <>
+                    <TextInput placeholder=""
+                      name="excelColumnName"
+                      label="Excel Column Name:"
+                      value={formData.excelColumnName}
+                      onChange={handleInputChange}
+                      required={false}
+                      ></TextInput>
 
-                <TextInput placeholder=""
-                  name="excelSheetName"
-                  label="Excel Sheet Name:"
-                  value={formData.excelSheetName}
-                  onChange={handleInputChange}
-                  required={false}
-                  ></TextInput>
+                    <TextInput placeholder=""
+                      name="excelSheetName"
+                      label="Excel Sheet Name:"
+                      value={formData.excelSheetName}
+                      onChange={handleInputChange}
+                      required={false}
+                      ></TextInput>
 
-                <FileInput
-                  name="studentExcel"
-                  label="Excel File:"
-                  value={formData.studentExcel}
-                  onChange={handleInputChange}
-                  accept=".csv,.xlsx"
-                  multiple={false}
-                  placeholder="Upload Excel File"
-                ></FileInput>  
+                    <FileInput
+                      name="studentExcel"
+                      label="Excel File:"
+                      value={formData.studentExcel}
+                      onChange={handleInputChange}
+                      accept=".csv,.xlsx"
+                      multiple={false}
+                      placeholder="Upload Excel File"
+                    ></FileInput>  
 
-                <button disabled={addExcelDisabled} onClick={appendExcelData} className={`${addExcelDisabled? "btn-disabled" :""} `}>
-                  Add students
-                </button>
+                    <button disabled={addExcelDisabled} onClick={appendExcelData} className={`${addExcelDisabled? "btn-disabled" :""} `}>
+                      Add students
+                    </button>
+                  </>
+                }
+                
               </div>              
             </div>                  
             

@@ -121,6 +121,14 @@ input[type~="file"]::file-selector-button{
 input[type~="file"]::file-selector-button:hover{
     background-color: var(--btn-default-bgcolor);
 }
+.field-checkbox{
+    display: flex;
+    align-items: center;
+}
+.field-checkbox input{
+    width: 1rem;
+}
+
 
 th, td{    
     font-family: 'Roboto', sans-serif;
