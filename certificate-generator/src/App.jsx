@@ -59,7 +59,7 @@ function App() {
     studentExcelJson: [],
   })
 
-  const [addExcelData, setAddExcelData] = useState(false)
+  const [addExcelDisabled, setAddExcelDisabled] = useState(true)
 
   // handle inputs
   const handleInputChange = (e) => {
@@ -126,9 +126,12 @@ function App() {
             return {
               ...prev,
               studentExcelJson: tempStudents,
-              students: [...prev.students, ...tempStudents]
+              // students: [...prev.students, ...tempStudents]
             }
           })
+
+          // toggle the add excel button
+          setAddExcelDisabled(!addExcelDisabled)
 
         }
 
@@ -141,6 +144,18 @@ function App() {
     }
 
   }, [formData.excelColumnName, formData.excelSheetName, formData.studentExcel])
+
+  function appendExcelData(){
+    const tempStudents = formData.studentExcelJson
+    setFormData(prev => {
+      return {
+        ...prev,        
+        students: [...prev.students, ...tempStudents]
+      }
+    })
+
+    setAddExcelDisabled(!addExcelDisabled)
+  }
 
 
   // generate pdf btn
@@ -331,6 +346,10 @@ function App() {
                   multiple={false}
                   placeholder="Upload Excel File"
                 ></FileInput>  
+
+                <button disabled={addExcelDisabled} onClick={appendExcelData}>
+                  Add students
+                </button>
               </div>              
             </div>                  
             
