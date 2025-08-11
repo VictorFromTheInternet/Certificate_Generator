@@ -91,7 +91,7 @@ body{
 label{
     display: block;
     font-family: 'Roboto', sans-serif;
-    margin: .5rem 0 0 0;
+    margin: .5rem 0 .15rem 0;
 }
 input, textarea{
     display: flex;
@@ -103,7 +103,7 @@ input, textarea{
 }
 input[type~="file"]{
     padding: 0;
-    margin: .5rem 0;
+    margin: 0 0 .5rem 0;
     border-radius: 0;
 }
 input[type~="file"]::file-selector-button{   
